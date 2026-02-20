@@ -3,7 +3,7 @@
 > Interfaccia Streamlit modulare per interagire con LLM locali (Ollama), remoti e cloud.
 > Progetto Open Source della community **DeepAiUG**.
 
-[![Version](https://img.shields.io/badge/version-1.9.1-blue.svg)](https://github.com/EnzoGitHub27/datapizza-streamlit-interface/releases/tag/v1.9.1)
+[![Version](https://img.shields.io/badge/version-1.9.2-blue.svg)](https://github.com/EnzoGitHub27/datapizza-streamlit-interface/releases/tag/v1.9.2)
 [![Python](https://img.shields.io/badge/python-3.9+-green.svg)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)](https://streamlit.io)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
@@ -26,6 +26,23 @@
 - ♻️ **Architettura modulare** - Codice organizzato in packages
 
 ---
+
+### 🧠 Novità v1.9.2 — Prompt Epistemologici Potenziati
+I 5 prompt socratici sono stati riscritti con un framework epistemologico
+esplicito. Nessuna nuova funzionalità visibile: cambia la **profondità
+del lavoro semantico** restituito all'utente.
+
+| Bottone | Prima | Dopo |
+|---|---|---|
+| 🔄 Alternative | 3 varianti generiche | 3 tipi distinti: Soluzione / Framing / Assunzione |
+| 🤔 Assunzioni | Lista assunzioni implicite | Tri-classificazione: Fatti / Inferenze / Valutazioni + Test della Premessa |
+| ⚠️ Limiti | Situazioni in cui non funziona | Dominio / Contesto / Modello (Lettore Implicito) |
+| 🎭 Confuta | Avvocato del diavolo generico | 2 livelli: Conclusioni + Struttura argomentativa |
+| 🪞 Rifletti | 3 domande provocatorie | Presupposizioni / Destinatario Implicito / Domanda sotto la Domanda |
+
+> **Filosofia:** DeepAiUG non implementa validatori automatici AI-su-AI.
+> Il test epistemologico è l'umano. I prompt restituiscono attrito strutturato,
+> non punteggi delegati alla macchina. *(Ispirato a Floridi, Eco, Quartarone)*
 
 ## 🆕 Novità v1.9.1 - UI Polish + Cloud Config + Privacy Granulare 🎨
 

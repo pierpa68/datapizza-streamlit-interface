@@ -61,6 +61,8 @@ v1.0.0 ✅ (2026-01-01)          Base interface + Multi-provider
    │
    ├─→ v1.9.1 ✅ (2026-02-11)   + 🎨 UI Polish + ☁️ Cloud Config + 🔒 Privacy Granulare
    │
+   ├─→ v1.9.2 ✅ (2026-02-20)   + 🧠 Prompt Epistemologici Potenziati
+   │
    └─→ v2.0.0 🎯 (Q2-Q3 2026)   + Semantic Layer + Knowledge Graph
 
 ✅ = Completata
@@ -73,6 +75,22 @@ v1.0.0 ✅ (2026-01-01)          Base interface + Multi-provider
 ---
 
 ## ✅ Completate
+
+### v1.9.2 — Prompt Epistemologici Potenziati ✅
+**Data:** Febbraio 2026
+**Filosofia:** Profondità epistemologica senza automazione.
+I 5 prompt socratici riscritti con framework esplicito (Floridi/Eco/Quartarone).
+Il test epistemologico resta all'umano: nessun validatore automatico AI-su-AI.
+
+**Modifiche:**
+- `ui/socratic/prompts.py`: 5 template potenziati
+  - Alternative → 3 tipi distinti (Soluzione / Framing / Assunzione)
+  - Assunzioni → tri-classificazione Fatti / Inferenze / Valutazioni + Test della Premessa
+  - Limiti → Dominio / Contesto / Modello (Lettore Implicito da Eco)
+  - Confuta → 2 livelli (Conclusioni + Struttura argomentativa)
+  - Rifletti → 3 dimensioni (Presupposizioni / Destinatario Implicito / Domanda sotto la Domanda)
+
+Nessun altro file modificato.
 
 ### v1.9.1 - 🎨 UI Polish + Cloud Config + Privacy Granulare (2026-02-11)
 - [x] Chat bubble rendering unificato: singola `st.markdown()` con `markdown-it-py`

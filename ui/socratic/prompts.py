@@ -1,83 +1,94 @@
 # ui/socratic/prompts.py
-# DeepAiUG v1.8.0 - Template Prompt Socratici
+# DeepAiUG v1.9.x - Template Prompt Socratici
 # ============================================================================
-# Prompt per stimolare il "lavoro semantico" dell'utente.
+# Prompt epistemologicamente potenziati per stimolare il "lavoro semantico".
 # Ispirati al concetto di capitale semantico (Floridi/Quartarone).
 # ============================================================================
 
 # Template dei prompt socratici
 SOCRATIC_PROMPTS = {
-    # v1.6.1 - Prima feature
-    "alternatives": """Data questa risposta:
+    # v1.6.1 → v1.9.x - Potenziato
+    "alternatives": """Analizza la seguente risposta e produci tre tipi di alternative distinti:
 
-\"\"\"{response}\"\"\"
+1. ALTERNATIVE DI SOLUZIONE — approcci diversi che portano allo stesso obiettivo
+2. ALTERNATIVE DI FRAMING — riformulazioni del problema che cambiano la prospettiva
+3. ALTERNATIVE DI ASSUNZIONE — cosa cambia se il contesto o le premesse sono diversi
 
-Genera 3 interpretazioni alternative dello stesso problema, ognuna basata su presupposti diversi.
+Per ciascuna alternativa indica brevemente perché potrebbe essere preferibile
+rispetto alla risposta originale e in quale contesto decisionale avrebbe senso.
 
-Formato richiesto:
-**Alternativa 1 - [Nome prospettiva]**
-[Spiegazione concisa]
+Risposta da analizzare:
+{response}""",
 
-**Alternativa 2 - [Nome prospettiva]**
-[Spiegazione concisa]
+    # v1.7.0 → v1.9.x - Potenziato
+    "assumptions": """Analizza la seguente risposta classificando il suo contenuto in tre livelli epistemici:
 
-**Alternativa 3 - [Nome prospettiva]**
-[Spiegazione concisa]
+1. FATTI — affermazioni osservabili e verificabili indipendentemente
+2. INFERENZE — conclusioni probabilistiche che dipendono da dati o correlazioni
+3. VALUTAZIONI — giudizi normativi che dipendono da chi decide e dal suo contesto
 
-Sii conciso ma significativo. Ogni alternativa deve offrire un punto di vista genuinamente diverso.""",
+Per le INFERENZE più rilevanti, aggiungi: "Se questa inferenza fosse errata,
+quali conclusioni della risposta sopravviverebbero? Quali cadrebbero?"
 
-    # v1.7.0 - Future features (placeholder)
-    "assumptions": """Analizza questa risposta:
+Rispondi in modo strutturato, senza punteggi o valutazioni automatiche.
 
-\"\"\"{response}\"\"\"
+Risposta da analizzare:
+{response}""",
 
-Quali assunzioni implicite contiene? Cosa dà per scontato che potrebbe non esserlo?
+    # v1.7.0 → v1.9.x - Potenziato
+    "limits": """Analizza i limiti della seguente risposta distinguendo tre categorie:
 
-Elenca le assunzioni in modo chiaro e conciso.""",
+1. LIMITI DI DOMINIO — il campo trattato è intrinsecamente instabile, controverso
+   o soggetto a rapida evoluzione (dove la delega alla macchina è rischiosa)
+2. LIMITI DI CONTESTO — informazioni mancanti, ipotesi sul contesto dell'utente
+   che potrebbero essere scorrette
+3. LIMITI DEL MODELLO — il tipo di destinatario e di problema che questa risposta
+   presuppone implicitamente (chi non è il destinatario ideale di questa risposta?)
 
-    "limits": """Analizza questa risposta:
+Concludi con: quali parti della risposta restano valide indipendentemente dai limiti
+elencati, e quali richiedono verifica prima di agire.
 
-\"\"\"{response}\"\"\"
+Risposta da analizzare:
+{response}""",
 
-In quali situazioni questa risposta NON funzionerebbe o sarebbe fuorviante?
-Quali sono i limiti di validità di questa spiegazione?
+    # v1.8.0 → v1.9.x - Potenziato
+    "confute": """Agisci come avvocato del diavolo sulla seguente risposta su due livelli distinti:
 
-Sii specifico e concreto.""",
+LIVELLO 1 — CONFUTAZIONE DELLE CONCLUSIONI
+Argomenta contro le affermazioni principali: quali sono le obiezioni più solide
+che un esperto critico potrebbe sollevare?
 
-    # v1.8.0 - Confuta (avvocato del diavolo)
-    "confute": """Agisci come avvocato del diavolo.
+LIVELLO 2 — CONFUTAZIONE DELLA STRUTTURA
+Metti alla prova le premesse fondanti: se le assunzioni di base fossero false
+o il contesto fosse diverso, quali parti della risposta collasserebbero?
+Quali invece reggerebbero comunque?
 
-Confuta questa risposta:
+Non cercare di bilanciare o ammorbidire. L'obiettivo è trovare i punti di cedimento,
+non produrre una valutazione equilibrata.
 
-\"\"\"{response}\"\"\"
+Risposta da analizzare:
+{response}""",
 
-Analizza criticamente:
-1. **Punti deboli**: Dove il ragionamento è fragile?
-2. **Falle logiche**: Ci sono salti logici o semplificazioni eccessive?
-3. **Controesempi**: In quali casi concreti questa risposta sarebbe sbagliata?
+    # v1.8.0 → v1.9.x - Potenziato
+    "reflect": """Non analizzare la risposta. Analizza la domanda che l'ha generata.
 
-Sii rigoroso ma costruttivo. L'obiettivo è rafforzare il pensiero critico, non demolire.""",
+Esamina la seguente domanda su tre dimensioni:
 
-    # v1.8.0 - Rifletti (sfida la DOMANDA, non la risposta)
-    "reflect": """L'utente ha fatto questa domanda:
+1. PRESUPPOSIZIONI — quali credenze o assunzioni implicite la domanda porta con sé?
+   Cosa deve essere già vero perché la domanda abbia senso?
 
-\"\"\"{user_question}\"\"\"
+2. DESTINATARIO IMPLICITO — che tipo di decisore o contesto questa domanda presuppone?
+   La risposta cambierebbe significativamente se chi decide fosse diverso
+   (ruolo, responsabilità, valori, vincoli)?
 
-E ha ricevuto questa risposta:
+3. DOMANDA SOTTO LA DOMANDA — c'è un problema più profondo o più preciso
+   che potrebbe essere più utile affrontare?
 
-\"\"\"{response}\"\"\"
+Non rispondere alla domanda originale. Restituisci attrito: aiuta l'utente
+a capire cosa sta davvero chiedendo e perché.
 
-Invece di analizzare la risposta, SFIDA LA DOMANDA dell'utente.
-Genera 3 domande provocatorie che aiutino a riflettere su:
-
-1. **Perimetro decisionale**: Su cosa sta davvero decidendo? La domanda nasconde una decisione più grande?
-
-2. **Assunzioni non dette**: Cosa sta dando per scontato senza accorgersene? Quali vincoli impliciti ha nella mente?
-
-3. **Giustificabilità**: Quale parte della risposta non saprebbe giustificare se qualcuno glielo chiedesse?
-
-Non dare risposte. Fai solo domande che mettano in crisi costruttivamente.
-Sii diretto ma rispettoso. L'obiettivo è migliorare il DIALOGO, non l'output.""",
+Domanda dell'utente: {user_question}
+Risposta ricevuta (contesto): {response}""",
 }
 
 

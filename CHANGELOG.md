@@ -7,6 +7,71 @@ e il progetto aderisce a [Semantic Versioning](https://semver.org/lang/it/).
 
 ---
 
+## [1.9.2] - 2026-02-20 — Prompt Epistemologici Potenziati
+
+### Filosofia
+Questa versione non aggiunge nuovi bottoni né nuove funzionalità visibili.
+Interviene in profondità sulla qualità del "lavoro semantico" richiesto all'utente:
+i 5 template prompt socratici sono stati riscritti seguendo un framework
+epistemologico esplicito, ispirato a Floridi, Umberto Eco (Lector in Fabula)
+e al lavoro teorico di Carmelo Quartarone sull'asimmetria AI-umano.
+
+La decisione di NON implementare un validatore automatico AI-su-AI (proposto
+come alternativa) è coerente con la filosofia DeepAiUG: il test epistemologico
+è l'umano, non un'altra AI. I prompt restituiscono attrito strutturato,
+non punteggi o giudizi delegati alla macchina.
+
+### Modifiche — ui/socratic/prompts.py
+
+**🔄 Alternative** (v1.6.1 → v1.9.2)
+Prima: generava 3 interpretazioni alternative con formato fisso.
+Ora: distingue tre tipi epistemicamente diversi — Alternative di Soluzione
+(approcci diversi allo stesso obiettivo), Alternative di Framing
+(riformulazioni del problema), Alternative di Assunzione (cosa cambia
+se il contesto è diverso). Per ciascuna indica in quale contesto
+decisionale avrebbe senso.
+
+**🤔 Assunzioni** (v1.7.0 → v1.9.2)
+Prima: elencava assunzioni implicite in modo generico.
+Ora: classifica il contenuto della risposta in tre livelli epistemici —
+Fatti (verificabili), Inferenze (probabilistiche), Valutazioni (normative,
+dipendenti da chi decide). Per le inferenze chiave aggiunge il Test della
+Premessa: "Se questa inferenza fosse errata, quali conclusioni sopravvivono?
+Quali cadono?"
+
+**⚠️ Limiti** (v1.7.0 → v1.9.2)
+Prima: elencava situazioni in cui la risposta non funzionava.
+Ora: distingue Limiti di Dominio (campo instabile o controverso),
+Limiti di Contesto (informazioni mancanti, ipotesi errate sul destinatario),
+Limiti del Modello (il tipo di lettore implicito presupposto dalla risposta,
+concetto da Eco/Ligas). Conclude con quali parti restano valide e quali
+richiedono verifica prima di agire.
+
+**🎭 Confuta** (v1.8.0 → v1.9.2)
+Prima: avvocato del diavolo generico su punti deboli e controesempi.
+Ora: opera su due livelli distinti — Livello 1 (Confutazione delle
+Conclusioni: obiezioni di un esperto critico) e Livello 2 (Confutazione
+della Struttura: se le premesse fondanti fossero false, quali parti
+collassano? Quali reggono?). Il secondo livello è il salto qualitativo
+principale: non confuta le risposte ma testa la tenuta logica della
+struttura argomentativa.
+
+**🪞 Rifletti** (v1.8.0 → v1.9.2)
+Prima: 3 domande provocatorie su perimetro decisionale, assunzioni e
+giustificabilità.
+Ora: analizza la domanda dell'utente su tre dimensioni — Presupposizioni
+(cosa deve essere già vero perché la domanda abbia senso), Destinatario
+Implicito (come cambia la risposta se chi decide ha ruolo/valori/vincoli
+diversi), Domanda sotto la Domanda (il problema più profondo o più preciso
+che sarebbe più utile affrontare). Introduce esplicitamente il concetto
+di non-neutralità della risposta AI (Eco: ogni testo presuppone un
+Lettore Modello).
+
+### File modificati
+- `ui/socratic/prompts.py` — 5 template riscritti, funzioni helper invariate
+
+---
+
 ## [1.9.1] - 2026-02-11
 
 ### 🎨 UI Polish + Cloud Config + Privacy Granulare

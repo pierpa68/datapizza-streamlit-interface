@@ -8,7 +8,7 @@ from pathlib import Path
 # VERSIONE
 # ============================================================================
 
-VERSION = "1.9.1"
+VERSION = "1.9.2"
 VERSION_STRING = f"v{VERSION}"
 VERSION_DESCRIPTION = "UI Polish + Cloud Config + Privacy Granulare"
 
