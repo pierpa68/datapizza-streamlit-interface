@@ -440,4 +440,4 @@ MIT License - vedi [LICENSE](LICENSE)
 
 ---
 
-*Made with ❤️ by DeepAiUG Community*
+*Made with ❤️ by Gilles - DeepAiUG*
