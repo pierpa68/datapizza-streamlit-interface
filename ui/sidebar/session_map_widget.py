@@ -47,7 +47,7 @@ def render_session_map_settings() -> str:
     st.sidebar.subheader("📊 Mappa sessione")
 
     # Tooltip "?"
-    with st.sidebar.expander("❓ Cos'è la Mappa Sessione?", expanded=False):
+    with st.sidebar.popover("❓ Cos'è la Mappa Sessione?"):
         st.markdown(_TOOLTIP_TEXT)
 
     # Radio button per le modalità
@@ -99,7 +99,7 @@ def render_generate_map_button() -> bool:
     return st.sidebar.button("📊 Genera mappa", key="btn_genera_mappa")
 
 
-def render_session_map_display(map_data: SessionMap) -> bool:
+def render_session_map_display(map_data: SessionMap, model_name: str = "") -> bool:
     """
     Renderizza la mappa sessione nella sidebar.
 
@@ -107,6 +107,7 @@ def render_session_map_display(map_data: SessionMap) -> bool:
 
     Args:
         map_data: Mappa sessione già calcolata da SessionMapAnalyzer
+        model_name: Nome del modello LLM usato (opzionale)
 
     Returns:
         True se l'utente ha premuto "Rigenera mappa"
@@ -135,10 +136,11 @@ def render_session_map_display(map_data: SessionMap) -> bool:
             for frame in map_data.unexplored_frames:
                 st.markdown(f"→ {frame}")
 
-        # Timestamp
-        st.caption(
-            f"Mappa generata alle {map_data.created_at.strftime('%H:%M')}"
-        )
+        # Timestamp + modello
+        caption = f"Mappa generata alle {map_data.created_at.strftime('%H:%M')}"
+        if model_name:
+            caption += f"  •  🤖 {model_name}"
+        st.caption(caption)
 
     # Bottone rigenera (fuori dall'expander, visibile sempre)
     return st.sidebar.button("🔄 Rigenera mappa", key="btn_rigenera_mappa")

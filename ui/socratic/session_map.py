@@ -7,6 +7,7 @@
 # risposta dopo risposta, viene condotta la semiosfera dell'utente.
 # ============================================================================
 
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable
@@ -184,7 +185,6 @@ def _parse_llm_response(
             dominant_frame = stripped.strip('"').strip("'")
         elif current_section == "connections":
             # Match numbered lines (1. / 1) ) or bulleted (- / •)
-            import re
             num_match = re.match(r'^(\d+)[.\)]\s*(.*)', stripped)
             dash_match = re.match(r'^[-•]\s*(.*)', stripped) if not num_match else None
 
@@ -201,8 +201,17 @@ def _parse_llm_response(
                 contribution = line_content
                 for sep in ["→", "->", ":"]:
                     if sep in line_content:
-                        contribution = line_content.split(sep, 1)[1].strip()
+                        after_sep = line_content.split(sep, 1)[1].strip()
+                        if after_sep:
+                            contribution = after_sep
                         break
+
+                # Fallback: strip quoted question text to get the actual contribution
+                contribution = re.sub(r'^["\u201c].*?["\u201d]\s*', '', contribution).strip()
+
+                # If still empty, use the whole line content as-is
+                if not contribution:
+                    contribution = line_content.strip()
 
                 # Associate with question by number or sequential order
                 target_idx = None
@@ -228,13 +237,18 @@ def _parse_llm_response(
             if clean:
                 unexplored_frames.append(clean)
 
+    # Sanitize: fill empty frame_contribution with fallback text
+    for entry in entries:
+        if not entry.frame_contribution.strip():
+            entry.frame_contribution = "(contributo al frame non estratto)"
+
     # If parsing didn't produce entries, create basic ones from questions
     if not entries and questions:
         for msg_idx, q_text in questions:
             entries.append(SessionMapEntry(
                 message_index=msg_idx,
                 question_summary=q_text[:120],
-                frame_contribution="",
+                frame_contribution="(contributo al frame non estratto)",
                 timestamp=now,
             ))
 

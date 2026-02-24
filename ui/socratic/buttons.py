@@ -21,6 +21,14 @@ from .prompts import (
 )
 
 
+def _render_model_timestamp() -> None:
+    """Mostra modello e timestamp sotto un output socratico."""
+    model_name = st.session_state.get("current_model", "")
+    now = datetime.now().strftime("%H:%M")
+    if model_name:
+        st.caption(f"🤖 {model_name}  •  🕐 {now}")
+
+
 def _get_socratic_cache_key(msg_index: int, action: str) -> str:
     """Genera la chiave per la cache delle risposte socratiche."""
     return f"socratic_{action}_{msg_index}"
@@ -519,30 +527,35 @@ def render_socratic_buttons(
         with st.expander("🔄 **Alternative generate** - Esplora prospettive diverse", expanded=False):
             st.markdown(st.session_state[alt_cache_key])
             st.caption("💡 *Quale prospettiva ti sembra più utile?*")
+            _render_model_timestamp()
 
     # Mostra le assunzioni se presenti
     if has_assum_cached:
         with st.expander("🤔 **Assunzioni implicite** - Cosa si dà per scontato?", expanded=False):
             st.markdown(st.session_state[assum_cache_key])
             st.caption("💭 *Quali si applicano davvero alla tua situazione?*")
+            _render_model_timestamp()
 
     # Mostra i limiti se presenti
     if has_limits_cached:
         with st.expander("⚠️ **Limiti di validità** - Quando NON funziona", expanded=False):
             st.markdown(st.session_state[limits_cache_key])
             st.caption("🔍 *La tua situazione rientra in questi casi limite?*")
+            _render_model_timestamp()
 
     # Mostra la confutazione se presente (v1.8.0)
     if has_confute_cached:
         with st.expander("🎭 **Confutazione** - Avvocato del diavolo", expanded=False):
             st.markdown(st.session_state[confute_cache_key])
             st.caption("⚔️ *Usa questa critica per rafforzare il tuo ragionamento.*")
+            _render_model_timestamp()
 
     # Mostra la riflessione se presente (v1.8.0)
     if has_reflect_cached:
         with st.expander("🪞 **Riflessione sulla domanda** - Sfida il tuo perimetro", expanded=False):
             st.markdown(st.session_state[reflect_cache_key])
             st.caption("🎯 *Stai facendo la domanda giusta?*")
+            _render_model_timestamp()
 
     # ========== INVITO RIFLESSIONE (solo in modalità socratica) - v1.8.0 ==========
     if mode_config.get("show_reflection_invite", False):

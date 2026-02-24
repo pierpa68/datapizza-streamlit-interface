@@ -347,7 +347,10 @@ if (
 
 # Display mappa se già calcolata + bottone rigenera
 if st.session_state.get("session_map_data") is not None:
-    rigenera = render_session_map_display(st.session_state["session_map_data"])
+    rigenera = render_session_map_display(
+        st.session_state["session_map_data"],
+        model_name=st.session_state.get("current_model", ""),
+    )
     if rigenera:
         socratic_client_regen = get_socratic_client(
             connection_type, provider, api_key, model, base_url, temperature
