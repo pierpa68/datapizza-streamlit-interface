@@ -1,0 +1,12 @@
+# DeepAiUG Branding Configuration
+# Personalizza l'interfaccia per la tua organizzazione
+
+app:
+  title: "DeepAiUG Chat"    # Es. "AziendaXYZ AI"
+  icon: "🧠"                # Es. "🏢" oppure "⚙️"
+  subtitle: ""               # Opzionale, lascia vuoto per nasconderlo
+
+news_banner:
+  enabled: true
+  text: "Modalità Socratica - Scegli la profondità di analisi!"
+  version: "1.10.0"

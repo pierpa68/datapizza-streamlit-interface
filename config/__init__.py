@@ -54,6 +54,16 @@ from .constants import (
     SESSION_MAP_PROGRESSIVE_VISIBLE_AFTER,
 )
 
+# v1.10.0 - Branding
+from .branding import (
+    APP_TITLE,
+    APP_ICON,
+    APP_SUBTITLE,
+    NEWS_BANNER_ENABLED,
+    NEWS_BANNER_TEXT,
+    NEWS_BANNER_VERSION,
+)
+
 __all__ = [
     "VERSION",
     "VERSION_STRING",
@@ -96,4 +106,11 @@ __all__ = [
     "DEFAULT_SESSION_MAP_MODE",
     "SESSION_MAP_NUDGE_THRESHOLD",
     "SESSION_MAP_PROGRESSIVE_VISIBLE_AFTER",
+    # v1.10.0 - Branding
+    "APP_TITLE",
+    "APP_ICON",
+    "APP_SUBTITLE",
+    "NEWS_BANNER_ENABLED",
+    "NEWS_BANNER_TEXT",
+    "NEWS_BANNER_VERSION",
 ]

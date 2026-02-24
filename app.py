@@ -29,6 +29,12 @@ from config import (
     DEFAULT_SESSION_MAP_MODE,           # v1.10.0
     SESSION_MAP_NUDGE_THRESHOLD,        # v1.10.0
     SESSION_MAP_PROGRESSIVE_VISIBLE_AFTER,  # v1.10.0
+    APP_TITLE,              # v1.10.0 - Branding
+    APP_ICON,               # v1.10.0 - Branding
+    APP_SUBTITLE,           # v1.10.0 - Branding
+    NEWS_BANNER_ENABLED,    # v1.10.0 - Branding
+    NEWS_BANNER_TEXT,        # v1.10.0 - Branding
+    NEWS_BANNER_VERSION,    # v1.10.0 - Branding
 )
 
 # ============================================================================
@@ -117,8 +123,8 @@ from ui.sidebar.session_map_widget import (
 # ============================================================================
 
 st.set_page_config(
-    page_title="DeepAiUG Chat",
-    page_icon="🧠",
+    page_title=APP_TITLE,
+    page_icon=APP_ICON,
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -386,11 +392,11 @@ if st.session_state.get("show_privacy_dialog", False):
 # ============================================================================
 
 if connection_type == "Cloud provider":
-    st.title(f"🧠 DeepAiUG Chat → {provider} `{VERSION}`")
+    st.title(f"{APP_ICON} {APP_TITLE} → {provider} `{VERSION}`")
 elif connection_type == "Remote host":
-    st.title(f"🧠 DeepAiUG Chat → Remote `{VERSION}`")
+    st.title(f"{APP_ICON} {APP_TITLE} → Remote `{VERSION}`")
 else:
-    st.title(f"🧠 DeepAiUG Chat → Ollama `{VERSION}`")
+    st.title(f"{APP_ICON} {APP_TITLE} → Ollama `{VERSION}`")
 
 # ============================================================================
 # 🆕 v1.5.0 - PRIVACY WARNING BANNER (se su Cloud con documenti)
@@ -414,7 +420,8 @@ if st.session_state.get("use_knowledge_base"):
     else:
         st.warning("📚 Knowledge Base attivata ma non indicizzata. Configura una cartella nella sidebar.")
 else:
-    st.info(f"✨ **Novità {VERSION}**: Modalità Socratica - Scegli la profondità di analisi!")
+    if NEWS_BANNER_ENABLED:
+        st.info(f"✨ **Novità {NEWS_BANNER_VERSION}**: {NEWS_BANNER_TEXT}")
 
 # ============================================================================
 # CONNECTION INDICATOR
