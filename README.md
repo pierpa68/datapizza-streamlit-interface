@@ -6,10 +6,25 @@
 > *"Non semplifica il pensare, ma lo allena."*
 > — Carmelo Quartarone, Innovation Senior Developer @ Cloudia Research
 
-[![Version](https://img.shields.io/badge/version-1.11.1-blue.svg)](https://github.com/EnzoGitHub27/datapizza-streamlit-interface/releases/tag/v1.11.1)
+[![Version](https://img.shields.io/badge/version-1.11.2-blue.svg)](https://github.com/EnzoGitHub27/datapizza-streamlit-interface/releases/tag/v1.11.2)
 [![Python](https://img.shields.io/badge/python-3.9+-green.svg)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)](https://streamlit.io)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+
+---
+
+## 🚀 Installazione rapida — Nessuna competenza tecnica richiesta
+
+| Sistema | Script | Cosa fa |
+|---|---|---|
+| 🪟 Windows 11 | `INSTALLA_DeepAiUG.bat` | Installa tutto automaticamente |
+| 🍎 Mac | `installa_deepaiug_mac.sh` | Installa tutto automaticamente |
+| 🐧 Linux | `installa_deepaiug_linux.sh` | Installa tutto automaticamente |
+
+📥 **[Scarica installer](https://github.com/EnzoGitHub27/datapizza-streamlit-interface/releases/latest)**
+🌐 **[Demo online e guida](https://deepaiug.vercel.app)**
+
+Istruzioni dettagliate in `installer/INIZIA-QUI.txt`
 
 ---
 
@@ -29,6 +44,16 @@
 - ♻️ **Architettura modulare** - Codice organizzato in packages
 
 ---
+
+### 🚀 Novità v1.11.2 — Installer multipiattaforma
+
+- Installazione automatica su **Windows 11**, **Mac** e **Linux**
+- Suggerimento modello AI in base alla RAM rilevata
+- Progress bar durante i download, log installazione automatico
+- Launcher e icona Desktop creati automaticamente
+- Nessuna competenza tecnica richiesta
+
+Vedi `installer/INIZIA-QUI.txt` per le istruzioni.
 
 ### 🎨 Novità v1.11.1 — Matrix Theme
 
@@ -220,9 +245,9 @@ ollama list  # verifica modelli installati
 
 ---
 
-## 🚀 Installazione
+## 🔧 Installazione avanzata (sviluppatori)
 
-### Metodo 1: Script Automatico (Consigliato) ⭐
+### Metodo 1: Script Automatico (da repo clonata)
 
 #### Linux/Mac
 ```bash
@@ -395,6 +420,7 @@ Vedi [ROADMAP.md](ROADMAP.md) per il piano completo.
 
 | Versione | Feature | Stato |
 |----------|---------|-------|
+| v1.11.2 | 🚀 Installer multipiattaforma Windows/Mac/Linux | ✅ |
 | v1.11.1 | 🎨 Matrix Theme | ✅ |
 | v1.11.0 | 🎨 Branding + UX Polish + Bug Fix parser | ✅ |
 | v1.10.0 | 📊 Mappa Sessione — Attrito sul pensiero | ✅ |
